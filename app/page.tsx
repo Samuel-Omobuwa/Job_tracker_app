@@ -28,6 +28,21 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className="border-t bg-white py-16">
+        <div>
+          {/* Tabs */}
+            <div>
+              <Button >Organize Applications</Button>
+              <Button >OGet Hired</Button>
+              <Button >Mange Boards</Button>
+            </div>
+            <div>
+             
+            </div>
+        </div>
+
+          </section>
      </main>
     </div>
   );
