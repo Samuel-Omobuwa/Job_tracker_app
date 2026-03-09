@@ -1,13 +1,19 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
-import {ArrowRight} from 'lucide-react'
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+const [activeTab, setActiveTab] = useState("") //organize, hired, boards
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
-     <main className="flex-1">
-      {/* Hero Section */}
-       <section className="container mx-auto px-4 py-32">
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="container mx-auto px-4 py-32">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-black mb-6 text-6xl font-bold">
               A better way to track your job application.
@@ -30,20 +36,40 @@ export default function Home() {
 
         {/* Hero Image Section */}
         <section className="border-t bg-white py-16">
-        <div>
-          {/* Tabs */}
-            <div>
-              <Button >Organize Applications</Button>
-              <Button >OGet Hired</Button>
-              <Button >Mange Boards</Button>
+          <div className="container mx-auto px-4">
+            {/* Tabs */}
+           <div className="mx-auto max-w-6xl">
+             <div className="flex gap-2 justify-center b-8 ">
+              <Button onClick={()=> setActiveTab('organize')}>Organize Applications</Button>
+              <Button onClick={()=> setActiveTab("hired")}>Get Hired</Button>
+              <Button onClick={()=> setActiveTab("boards")}>Manage Boards</Button>
             </div>
-            <div>
-             
-            </div>
-        </div>
+           </div>
+            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl">
+              {activeTab==='organize' && (<Image
+                src="/hero-images/Diadem_cover.jpg"
+                alt="Organize Applications"
+                width={1200}
+                height={800}
+              />)}
 
-          </section>
-     </main>
+              {activeTab==='hired' && (<Image
+                src="/hero-images/Diadem_mockup1.jpg"
+                alt="Get Hired"
+                width={1200}
+                height={800}
+              />)}
+
+              {activeTab=='boards' &&(<Image
+                src="/hero-images/Diadem_mockup2.jpg"
+                alt="Manage Boards"
+                width={1200}
+                height={800}
+              />)}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
